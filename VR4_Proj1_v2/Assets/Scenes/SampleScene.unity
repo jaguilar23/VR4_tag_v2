@@ -419,6 +419,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &974130357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 974130360}
+  - component: {fileID: 974130359}
+  - component: {fileID: 974130358}
+  m_Layer: 0
+  m_Name: NetworkManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &974130358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974130357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b79c4c87887ae4d809e27da88c79e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &974130359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974130357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c31d73558225d94a9a885142cd472fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &974130360
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974130357}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 333.11, y: 152.6, z: -128}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1044910595
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +581,7 @@ GameObject:
   - component: {fileID: 1452662688}
   - component: {fileID: 1452662687}
   - component: {fileID: 1452662686}
+  - component: {fileID: 1452662689}
   m_Layer: 0
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
@@ -579,6 +637,18 @@ Transform:
   - {fileID: 1253052985}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1452662689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452662685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8162a8243ae7aa44b325d721aefff30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1604563241
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,9 +699,9 @@ MonoBehaviour:
   m_EnableFly: 0
   m_UseGravity: 1
   m_GravityApplicationMode: 1
-  m_ForwardSource: {fileID: 0}
+  m_ForwardSource: {fileID: 338182317}
   m_LeftHandMoveAction:
-    m_UseReference: 1
+    m_UseReference: 0
     m_Action:
       m_Name: Left Hand Move
       m_Type: 0
@@ -643,7 +713,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_RightHandMoveAction:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
       m_Name: Right Hand Move
       m_Type: 0
@@ -653,7 +723,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: -8198699208435500284, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &1703853598
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,7 +771,7 @@ MonoBehaviour:
   m_System: {fileID: 1253052986}
   m_TurnSpeed: 60
   m_LeftHandTurnAction:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
       m_Name: Left Hand Turn
       m_Type: 0
@@ -711,9 +781,9 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: 1010738217276881514, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_RightHandTurnAction:
-    m_UseReference: 1
+    m_UseReference: 0
     m_Action:
       m_Name: Right Hand Turn
       m_Type: 0
@@ -2083,7 +2153,7 @@ GameObject:
   - component: {fileID: 2058507153}
   - component: {fileID: 2058507152}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2183,3 +2253,4 @@ SceneRoots:
   - {fileID: 2058507155}
   - {fileID: 1044910597}
   - {fileID: 1452662688}
+  - {fileID: 974130360}
