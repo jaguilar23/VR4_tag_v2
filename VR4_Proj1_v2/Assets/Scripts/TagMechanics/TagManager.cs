@@ -27,7 +27,7 @@ public class TagManager : MonoBehaviour
         if (designateSeekerTimer > waitTime)
         {
             designateSeeker();
-            Debug.Log("seeker assigned");
+           // Debug.Log("seeker assigned");
         }
 
         /*

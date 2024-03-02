@@ -32,11 +32,12 @@ public class TurboSpeed : MonoBehaviour
                 StartCoroutine(BoostSpeed(multiplayerMovement));
                 Debug.Log("Speed");
             }
+            // "Delete" powerup
+            myRenderer.enabled = false;
+            myCollider.enabled = false;
         }
 
-        // "Delete" powerup
-        myRenderer.enabled = false;
-        myCollider.enabled = false;
+        
     }
 
     IEnumerator BoostSpeed(MultiplayerMovement multiplayerMovement)

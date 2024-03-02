@@ -60,13 +60,13 @@ public class PlayerLabel : MonoBehaviour
             // display UI to user
             if (isSeeker)
             {
-                Debug.Log("You are the SEEKER");
+               // Debug.Log("You are the SEEKER");
                 seekerLabel.text = "You are the SEEKER ";
 
             }
             else
             {
-                Debug.Log("You are a HIDER");
+              //  Debug.Log("You are a HIDER");
                 seekerLabel.text = "You are a HIDER ";
             }
         }
