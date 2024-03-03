@@ -8,13 +8,13 @@ public class TagManager : MonoBehaviour
 
     public GameObject[] playerList;
     public GameObject playerLabel;
-    private float waitTime = 15.0f;
-    private float designateSeekerTimer = 0.0f;
+    private float designateSeekerTimer = 15.0f;
     private PlayerLabel script;
-
+    bool gameStarted;
 
     private void Start()
     {
+        gameStarted = false;
         script = playerLabel.GetComponent<PlayerLabel>();
     }
 
@@ -22,13 +22,13 @@ public class TagManager : MonoBehaviour
     void Update()
     {
         playerList = GameObject.FindGameObjectsWithTag("Player");
-        designateSeekerTimer += Time.deltaTime;
 
-        if (designateSeekerTimer > waitTime)
+        if (designateSeekerTimer <= 0 && !gameStarted)
         {
             designateSeeker();
-           // Debug.Log("seeker assigned");
-        }
+            gameStarted = true;
+        } else if (designateSeekerTimer > 0)
+            designateSeekerTimer -= Time.deltaTime;
 
         /*
         if (Input.GetKeyDown(KeyCode.K))

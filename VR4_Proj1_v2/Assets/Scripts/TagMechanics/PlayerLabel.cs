@@ -13,9 +13,10 @@ public class PlayerLabel : MonoBehaviour
     public float currentSeekerTimer;
 
     public int numTeleports = 0;
-    float teleportDistance = 15.0f;
+    public float teleportDistance = 15.0f;
     private MeshRenderer myRenderer;
 
+    public GameObject playerTeleportUI;
     [SerializeField] TextMeshProUGUI teleportCountDisplay;
     [SerializeField] TextMeshProUGUI seekerLabel;
 
@@ -46,14 +47,6 @@ public class PlayerLabel : MonoBehaviour
 
         // Displays teleport use count in UI
         teleportCountDisplay.text = "Teleports: " + numTeleports.ToString();
-
-        if (Input.GetKeyDown(KeyCode.U) && numTeleports > 0)
-        {
-            Vector3 teleportPosition = transform.position + transform.forward * teleportDistance;
-            transform.position = teleportPosition; // move the player
-
-            numTeleports--;
-        }
 
         if (designateSeekerTimer > waitTime)
         {

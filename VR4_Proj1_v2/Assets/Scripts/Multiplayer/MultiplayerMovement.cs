@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using Photon.Pun;
+using Photon.Pun.Demo.PunBasics;
 public class MultiplayerMovement : MonoBehaviour
 {
-    private PhotonView myView;
+    public PhotonView myView;
     private GameObject myChild;
 
     private float xInput;
@@ -16,6 +17,8 @@ public class MultiplayerMovement : MonoBehaviour
     //[SerializeField] private GameObject myObjectToMove;
     private Rigidbody myRB;
     private Transform myXRRig;
+    public GameObject playerUI;
+    private PlayerLabel pL;
 
     // System vars
     bool grounded;
@@ -34,6 +37,7 @@ public class MultiplayerMovement : MonoBehaviour
         GameObject myXrOrigin = GameObject.Find("XR Origin (XR Rig)");
         myXRRig = myXrOrigin.transform;
         inputData = myXrOrigin.GetComponent<InputData>();
+        pL = GetComponent<PlayerLabel>();
     }
 
     // Update is called once per frame
@@ -41,10 +45,13 @@ public class MultiplayerMovement : MonoBehaviour
     {
         if (myView.IsMine)
         {
-            myXRRig.position = transform.position;
+            playerUI.SetActive(true); // make player's UI the only one visible for them
+
+            myXRRig.position = transform.position + transform.up;
+            myXRRig.rotation = transform.rotation;
 
             // TryGetFeatureValue is VERY useful for future development
-            if (inputData.rightController.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 movement))
+            if (inputData.leftController.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 movement))
             {
                 xInput = movement.x;
                 yInput = movement.y;
@@ -53,6 +60,23 @@ public class MultiplayerMovement : MonoBehaviour
             {
                 xInput = Input.GetAxis("Horizontal");
                 yInput = Input.GetAxis("Vertical");
+            }
+
+            if (inputData.rightController.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 r_movement))
+            {
+                float xRotate = r_movement.x;
+                transform.Rotate(Vector3.up * xRotate);
+            }
+
+            if (inputData.rightController.TryGetFeatureValue(CommonUsages.triggerButton, out bool t_pressed) && pL.numTeleports > 0)
+            {
+                if (t_pressed)
+                {
+                    Vector3 teleportPosition = transform.position + transform.forward * pL.teleportDistance;
+                    transform.position = teleportPosition; // move the player
+
+                    pL.numTeleports--;
+                }
             }
         }
 
@@ -72,6 +96,7 @@ public class MultiplayerMovement : MonoBehaviour
         {
             grounded = false;
         }
+
     }
 
     private void FixedUpdate()
