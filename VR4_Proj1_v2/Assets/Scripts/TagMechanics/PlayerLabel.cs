@@ -19,6 +19,7 @@ public class PlayerLabel : MonoBehaviour
     public GameObject playerTeleportUI;
     [SerializeField] TextMeshProUGUI teleportCountDisplay;
     [SerializeField] TextMeshProUGUI seekerLabel;
+    [SerializeField] TextMeshProUGUI seekerTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -43,26 +44,17 @@ public class PlayerLabel : MonoBehaviour
             {
                 currentSeekerTimer -= Time.deltaTime;
             }
+
+            // timer display
+            seekerTimer.gameObject.SetActive(true);
+            seekerTimer.text = ((int)currentSeekerTimer).ToString();
+        } else
+        {
+            seekerTimer.gameObject.SetActive(false);
         }
 
         // Displays teleport use count in UI
         teleportCountDisplay.text = "Teleports: " + numTeleports.ToString();
-
-        if (designateSeekerTimer > waitTime)
-        {
-            // display UI to user
-            if (isSeeker)
-            {
-               // Debug.Log("You are the SEEKER");
-                seekerLabel.text = "You are the SEEKER ";
-
-            }
-            else
-            {
-              //  Debug.Log("You are a HIDER");
-                seekerLabel.text = "You are a HIDER ";
-            }
-        }
     }
 
     void resetTimer()
@@ -80,5 +72,22 @@ public class PlayerLabel : MonoBehaviour
             collision.gameObject.GetComponent<PlayerLabel>().isSeeker = true;
             collision.gameObject.transform.position += new Vector3(10.0f, 10.0f, 10.0f);
         }
+    }
+
+    public IEnumerator DisplayStatus()
+    {
+        if (isSeeker)
+        {
+            seekerLabel.text = "You are the SEEKER ";
+        } else
+        {
+            seekerLabel.text = "You are a HIDER ";
+        }
+
+        seekerLabel.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(5.0f);
+
+        seekerLabel.gameObject.SetActive(false);
     }
 }

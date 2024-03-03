@@ -13,12 +13,18 @@ public class TurboSpeed : MonoBehaviour
     private GameObject disableBoost = null;
 
     private MeshRenderer myRenderer;
-    private BoxCollider myCollider;
+    private SphereCollider myCollider;
 
     private void Start()
     {
         myRenderer = GetComponent<MeshRenderer>();
-        myCollider = GetComponent<BoxCollider>();
+        myCollider = GetComponent<SphereCollider>();
+    }
+
+    private void Update()
+    {
+        // rotate around and about
+        transform.Rotate(transform.up * 60 * Time.deltaTime, Space.Self);
     }
 
     void OnCollisionEnter(Collision collision)

@@ -48,5 +48,11 @@ public class TagManager : MonoBehaviour
 
         // selecting random player as seeker
         playerList[Random.Range(0, playerList.Length)].GetComponent<PlayerLabel>().isSeeker = true;
+
+        // setting everyone to hider
+        for (int i = 0; i < playerList.Length; i++)
+        {
+            StartCoroutine(playerList[i].GetComponent<PlayerLabel>().DisplayStatus());
+        }
     }
 }

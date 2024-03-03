@@ -5,12 +5,18 @@ using UnityEngine;
 public class Force : MonoBehaviour
 {
     private MeshRenderer myRenderer;
-    private BoxCollider myCollider;
+    private SphereCollider myCollider;
 
     void Start()
     {
         myRenderer = GetComponent<MeshRenderer>();
-        myCollider = GetComponent<BoxCollider>();
+        myCollider = GetComponent<SphereCollider>();
+    }
+
+    private void Update()
+    {
+        // rotate around and about
+        transform.Rotate(transform.up * 60 * Time.deltaTime, Space.Self);
     }
 
     void OnCollisionEnter(Collision collision)
