@@ -8,7 +8,7 @@ public class TagManager : MonoBehaviour
 
     public GameObject[] playerList;
     public GameObject playerLabel;
-    private float designateSeekerTimer = 15.0f;
+    private float designateSeekerTimer = 7.0f;
     private PlayerLabel script;
     bool gameStarted;
 

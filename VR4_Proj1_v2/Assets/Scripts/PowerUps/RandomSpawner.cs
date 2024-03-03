@@ -11,7 +11,7 @@ public class RandomSpawner : MonoBehaviour
 
     private void Start()
     {
-        SpawningTime = Random.Range(1.5f, 5f);
+        SpawningTime = Random.Range(1.0f, 3.5f);
     }
 
     void SpawnNow()
@@ -31,7 +31,7 @@ public class RandomSpawner : MonoBehaviour
         {
 
             SpawnNow();
-            SpawningTime = Random.Range(1.5f, 5f);
+            SpawningTime = Random.Range(1.0f, 3.5f);
         }
     }
 }

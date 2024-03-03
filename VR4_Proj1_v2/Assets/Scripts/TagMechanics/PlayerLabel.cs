@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class PlayerLabel : MonoBehaviour
 {
     public bool isSeeker;
-    public float waitTime = 15.0f;
+    public float waitTime = 7.0f;
     public float designateSeekerTimer = 0.0f;
-    float seekerStartTime = 10.0f;
+    float seekerStartTime = 120.0f;
     public float currentSeekerTimer;
 
     public int numTeleports = 0;
