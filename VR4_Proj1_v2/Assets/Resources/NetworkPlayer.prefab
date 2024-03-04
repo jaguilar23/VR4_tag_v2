@@ -1025,7 +1025,7 @@ MonoBehaviour:
   - {fileID: 3203913916877738635}
   - {fileID: 4830755650636387076}
   life: 3
-  gameOver: {fileID: 1977057801108338835}
+  gameOver: {fileID: 8442617800620260064}
 --- !u!1 &6482140679684341376
 GameObject:
   m_ObjectHideFlags: 0
