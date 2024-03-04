@@ -86,7 +86,7 @@ public class PlayerLabel : MonoBehaviour
 
         seekerLabel.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(120.0f);
 
         seekerLabel.gameObject.SetActive(false);
     }

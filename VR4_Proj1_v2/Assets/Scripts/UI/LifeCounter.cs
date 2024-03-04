@@ -36,7 +36,7 @@ public class LifeCounter : MonoBehaviour
         {
             gameOver.text = "GAME OVER";
             dead = true;
-            Application.Quit();
+           // Application.Quit();
         }
     }
 }
