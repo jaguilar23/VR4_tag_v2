@@ -7,15 +7,14 @@ public class TagManager : MonoBehaviour
 {
 
     public GameObject[] playerList;
-    public GameObject playerLabel;
-    private float designateSeekerTimer = 7.0f;
-    private PlayerLabel script;
+    private float lobbyCountdown = 15.0f;
+    private float currentCountdown;
     bool gameStarted;
 
     private void Start()
     {
         gameStarted = false;
-        script = playerLabel.GetComponent<PlayerLabel>();
+        currentCountdown = lobbyCountdown;
     }
 
     // Update is called once per frame
@@ -23,19 +22,31 @@ public class TagManager : MonoBehaviour
     {
         playerList = GameObject.FindGameObjectsWithTag("Player");
 
-        if (designateSeekerTimer <= 0 && !gameStarted)
+        if (playerList.Length >= 2) // at least 2 players
         {
-            designateSeeker();
-            gameStarted = true;
-        } else if (designateSeekerTimer > 0)
-            designateSeekerTimer -= Time.deltaTime;
-
-        /*
-        if (Input.GetKeyDown(KeyCode.K))
+            if (currentCountdown <= 0 && !gameStarted)
+            {
+                designateSeeker();
+                gameStarted = true;
+            }
+            else if (lobbyCountdown > 0)
+            {
+                currentCountdown -= Time.deltaTime;
+                for (int i = 0; i < playerList.Length; i++)
+                {
+                    playerList[i].GetComponent<PlayerLabel>().lobbyStat.gameObject.SetActive(false);
+                    playerList[i].GetComponent<PlayerLabel>().lobbyTimer.gameObject.SetActive(true);
+                    playerList[i].GetComponent<PlayerLabel>().lobbyTimer.text = "Starts in " + ((int)currentCountdown).ToString();
+                }
+            }
+        } else
         {
-            designateSeeker();
+            for (int i = 0; i < playerList.Length; i++)
+            {
+                playerList[i].GetComponent<PlayerLabel>().lobbyStat.gameObject.SetActive(true);
+            }
+            currentCountdown = lobbyCountdown;
         }
-        */
     }
 
     public void designateSeeker()
@@ -44,6 +55,7 @@ public class TagManager : MonoBehaviour
         for (int i = 0; i < playerList.Length; i++)
         {
             playerList[i].GetComponent<PlayerLabel>().isSeeker = false;
+            playerList[i].GetComponent<PlayerLabel>().gameStarted = true;
         }
 
         // selecting random player as seeker

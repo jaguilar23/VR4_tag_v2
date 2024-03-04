@@ -61,7 +61,6 @@ public class Force : MonoBehaviour
         for (int i = 0; i < 500; i++)
         {
             Vector3 moveDirection = GetDirection(collector.transform.position, target.transform.position); // distance between players
-            Debug.Log(moveDirection);
 
             if (isCollectorSeeker)
             {
